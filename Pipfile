@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mlflow = "*"
+jupyter = "*"
+scikit-learn = "==1.0.2"
+pandas = "*"
+seaborn = "*"
+plotly = "*"
+hyperopt = "*"
+xgboost = "*"
+fastparquet = "*"
+boto3 = "*"
+python-dotenv = "*"
+prefect = "==2.0"
+s3fs = "*"
+bentoml = "*"
+bentoctl = "*"
+streamlit = "*"
+pymongo = "*"
+aiohttp = "==3.7.2"
+evidently = "*"
+
+[dev-packages]
+pylint = "*"
+black = "*"
+isort = "*"
+pre-commit = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

@@ -1,0 +1,34 @@
+{
+    "flow_name": "main-flow",
+    "import_path": "./training_flow.py:main_flow",
+    "parameter_openapi_schema": {
+        "title": "Parameters",
+        "type": "object",
+        "properties": {
+            "training_data_month": {
+                "title": "training_data_month",
+                "default": [
+                    [
+                        "05",
+                        "2022"
+                    ]
+                ],
+                "type": "array",
+                "items": {}
+            },
+            "validation_data_month": {
+                "title": "validation_data_month",
+                "default": [
+                    [
+                        "04",
+                        "2022"
+                    ]
+                ],
+                "type": "array",
+                "items": {}
+            }
+        },
+        "required": null,
+        "definitions": null
+    }
+}

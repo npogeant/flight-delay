@@ -1,0 +1,37 @@
+###
+### A complete description of a Prefect Deployment for flow 'monitoring-flow'
+###
+name: flight-delay-monitoring
+description: null
+tags:
+- ml
+- monitoring
+schedule: null
+parameters: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command:
+  - python
+  - -m
+  - prefect.engine
+  stream_output: true
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: monitoring-flow
+manifest_path: monitoring_flow-manifest.json
+storage:
+  basepath: /Users/npogeant/Documents/Data Science/flight-delay/monitoring
+  _is_anonymous: true
+  _block_document_name: anonymous-f7191dd2-682f-448b-b633-0482e74547d7
+  _block_document_id: 840e17da-3c5c-43aa-8368-8602fb27eeed
+  _block_type_slug: local-file-system
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null

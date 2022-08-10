@@ -1,0 +1,19 @@
+# Local terraform directories
+*/.terraform/
+
+# State files
+.tfstate
+*.tfstate.
+*.lock.hcl
+
+# Crash log files
+*.log
+
+# Sensitive data
+*.tfvars
+.env
+
+# Vscode metadata
+.vscode
+
+report.html

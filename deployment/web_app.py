@@ -44,7 +44,7 @@ with st.form("my_form"):
     )
     day_of_week = days[day_of_week]
 
-    with open("airport_&_airline_iata.txt") as load_file:
+    with open("airport_&_airline_iata.txt", encoding="utf-8") as load_file:
         tuples = [tuple(line.split()) for line in load_file]
         airport_iata = tuples[0]
         airline_iata = tuples[1]
@@ -89,7 +89,7 @@ def predict(day_of_week, op_carrier, origin, dep_time, air_time):
     # Send the image to the API
     response = requests.post(API_ENDPOINT, data=inputs)
 
-    if response.status_code == 200:
+    if response.status_code == 200:  # pylint: disable=no-else-return
         return response.text
     else:
         raise Exception(f"Status: {response.status_code}")
@@ -106,12 +106,11 @@ def main():
                 )
                 prediction = ast.literal_eval(prediction)[0]
                 if float(prediction) > 0.5:
-                    st.success(f"Your flight will be on time 😎")
+                    st.success("Your flight will be on time 😎")
                 elif float(prediction) <= 0.5:
-                    st.success(f"Your flight will be delayed 🥶")
-            except Exception as e:
+                    st.success("Your flight will be delayed 🥶")
+            except Exception:  # pylint: disable=broad-except
                 st.warning('Something went wrong ... please check your inputs 😳')
-    return
 
 
 if __name__ == "__main__":

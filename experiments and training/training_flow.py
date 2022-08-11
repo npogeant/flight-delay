@@ -95,7 +95,7 @@ def spliting(file_for_training: list, file_for_validation: list):
 
 
 @task
-def hyperparameter_tuning(train, valid, y_val):
+def hyperparameter_tuning(train, valid, y_val):  # pylint: disable=useless-return
     '''Tune the model with HyperOpt and log runs in mlflow
 
     Args
@@ -142,7 +142,7 @@ def hyperparameter_tuning(train, valid, y_val):
         'seed': 42,
     }
 
-    best_result = fmin(
+    best_result = fmin(  # pylint: disable=unused-variable
         fn=objective, space=search_space, algo=tpe.suggest, max_evals=1, trials=Trials()
     )
     return
@@ -244,39 +244,39 @@ def register_and_set_stage_model(client):
 
         if best_run_precision > production_run_precision:
             model_version = version
-            new_stage = "Production"
+            newstage = "Production"
             client.transition_model_version_stage(
                 name='flight-delay-classifier',
                 version=model_version,
-                stage=new_stage,
+                stage=newstage,
                 archive_existing_versions=False,
             )
             print(
-                f'The version {version} of flight-delay-classifier model has been set to {new_stage}'
+                f'The version {version} of flight-delay-classifier model has been set to {newstage}'
             )
         else:
             model_version = version
-            new_stage = "Archived"
+            newstage = "Archived"
             client.transition_model_version_stage(
                 name='flight-delay-classifier',
                 version=model_version,
-                stage=new_stage,
+                stage=newstage,
                 archive_existing_versions=False,
             )
             print(
-                f'The version {version} of flight-delay-classifier model has been set to {new_stage}'
+                f'The version {version} of flight-delay-classifier model has been set to {newstage}'
             )
     else:
         model_version = version
-        new_stage = "Production"
+        newstage = "Production"
         client.transition_model_version_stage(
             name='flight-delay-classifier',
             version=model_version,
-            stage=new_stage,
+            stage=newstage,
             archive_existing_versions=False,
         )
         print(
-            f'The version {version} of flight-delay-classifier model has been set to {new_stage}'
+            f'The version {version} of flight-delay-classifier model has been set to {newstage}'
         )
 
 
@@ -303,13 +303,18 @@ def main_flow(
         )
     ],
 ):
-    """ """
-
+    # pylint: disable=too-many-locals
+    # pylint: disable=dangerous-default-value
+    """Run the main flow"""
     MLFLOW_TRACKING_URI = os.getenv('MLFLOW_TRACKING_URI')
     MLFLOW_EXPERIMENT_NAME = os.getenv('MLFLOW_EXPERIMENT_NAME')
-    MLFLOW_TRACKING_USERNAME = os.getenv('MLFLOW_TRACKING_USERNAME')
-    MLFLOW_TRACKING_PASSWORD = os.getenv('MLFLOW_TRACKING_PASSWORD')
-    AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET")
+    MLFLOW_TRACKING_USERNAME = os.getenv(  # pylint: disable=unused-variable
+        'MLFLOW_TRACKING_USERNAME'
+    )
+    MLFLOW_TRACKING_PASSWORD = os.getenv(  # pylint: disable=unused-variable
+        'MLFLOW_TRACKING_PASSWORD'
+    )
+    AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET")  # pylint: disable=unused-variable
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)

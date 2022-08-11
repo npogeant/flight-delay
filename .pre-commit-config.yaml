@@ -17,15 +17,15 @@ repos:
   hooks:
     - id: black
       language_version: python3.9
-# - repo: local
-#   hooks:
-#     - id: pylint
-#       name: pylint
-#       entry: pylint
-#       language: system
-#       types: [python]
-#       args: [
-#         "-rn", # Only display messages
-#         "-sn", # Don't display the score
-#         "--recursive=y"
-#       ]
+- repo: local
+  hooks:
+    - id: pylint
+      name: pylint
+      entry: pylint
+      language: system
+      types: [python]
+      args: [
+        "-rn", # Only display messages
+        "-sn", # Don't display the score
+        "--recursive=y"
+      ]

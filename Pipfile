@@ -23,12 +23,14 @@ streamlit = "*"
 pymongo = "*"
 aiohttp = "==3.7.2"
 evidently = "*"
+deepdiff = "*"
 
 [dev-packages]
 pylint = "*"
 black = "*"
 isort = "*"
 pre-commit = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.9"

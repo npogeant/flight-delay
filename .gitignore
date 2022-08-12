@@ -13,7 +13,9 @@
 *.tfvars
 .env
 
-# Vscode metadata
+# Vscode / pytest metadata
 .vscode
+.pytest_cache
+__pycache__/
 
 report.html
